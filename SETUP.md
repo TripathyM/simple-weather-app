@@ -27,3 +27,16 @@ More info on https://nextjs.org/docs/pages/building-your-application/configuring
 1. Run `npm install --save-dev lint-staged husky`
 2. Add lint-stagedrc file as listed here https://nextjs.org/docs/pages/building-your-application/configuring/eslint#lint-staged
 3. Run `echo "npm run lint-staged" > .husky/pre-commit`. lint-staged command is configured in package.json
+
+## Jest + React Testing Library configuration
+
+1. Run the following commands
+
+```bash
+npm install -D jest jest-environment-jsdom @testing-library/react @testing-library/jest-dom
+npm init jest@latest
+
+```
+
+2. Update the `jest.config.ts` file based on instructions here on https://nextjs.org/docs/pages/building-your-application/testing/jest#manual-setup
+3. Use custom matchers by configuring `jest.setup.ts` as described here https://nextjs.org/docs/pages/building-your-application/testing/jest#optional-extend-jest-with-custom-matchers
