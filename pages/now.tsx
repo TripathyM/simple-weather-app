@@ -29,10 +29,10 @@ export default function Now() {
                         <Button title="back" onClick={() => router.push("/")}></Button>
                     </div>
                     <div className="min-h-screen flex flex-col items-center justify-center">
-                        <h1 className="text-6xl text-center font-bold pb-24 text-gray-700">What's it like outside?</h1>
+                        <h1 className="text-6xl text-center font-bold pb-24 text-gray-700">What&apos;s it like outside?</h1>
                         <div className="w-[60%] flex flex-row gap-4">
                             {
-                                weatherData.map(data => <Card weatherData={data} additionalClassNames="flex-1" />)
+                                weatherData.map((data, i) => <Card key={i} weatherData={data} additionalClassNames="flex-1" />)
                             }
                         </div>
                     </div>
