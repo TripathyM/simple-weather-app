@@ -14,8 +14,28 @@ export default function Now() {
 
   useEffect(() => {
     const getWeatherData = async () => {
-      const fetchResponse = await fetch("/api/now");
-      const responseJson = await fetchResponse.json();
+      // const fetchResponse = await fetch("/api/now");
+      // const responseJson = await fetchResponse.json();
+      const responseJson = {
+        items: [
+          {
+            area: "Boon Lay",
+            forecast: "Partly Cloudy (Day)",
+          },
+          {
+            area: "Punggol",
+            forecast: "Partly Cloudy (Day)",
+          },
+          {
+            area: "Sentosa",
+            forecast: "Partly Cloudy (Day)",
+          },
+          {
+            area: "Tampines",
+            forecast: "Partly Cloudy (Day)",
+          },
+        ],
+      };
       setWeatherData(responseJson.items);
     };
     getWeatherData();

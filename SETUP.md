@@ -34,9 +34,9 @@ More info on https://nextjs.org/docs/pages/building-your-application/configuring
 
 ```bash
 npm install -D jest jest-environment-jsdom @testing-library/react @testing-library/jest-dom
-npm init jest@latest
+npm init jest@latest # Select JS version for Jest config, to avoid installing ts-jest and ts-node
 
 ```
 
-2. Update the `jest.config.ts` file based on instructions here on https://nextjs.org/docs/pages/building-your-application/testing/jest#manual-setup
-3. Use custom matchers by configuring `jest.setup.ts` as described here https://nextjs.org/docs/pages/building-your-application/testing/jest#optional-extend-jest-with-custom-matchers
+2. Update the `jest.config.js` file based on instructions here on https://nextjs.org/docs/pages/building-your-application/testing/jest#manual-setup
+3. Use custom matchers by configuring `jest.setup.js` as described here https://nextjs.org/docs/pages/building-your-application/testing/jest#optional-extend-jest-with-custom-matchers
