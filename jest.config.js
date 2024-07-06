@@ -12,15 +12,6 @@ const createJestConfig = nextJest({
 });
 
 const customJestConfig = {
-  // All imported modules in your tests should be mocked automatically
-  // automock: false,
-
-  // Stop running tests after `n` failures
-  // bail: 0,
-
-  // The directory where Jest should store its cached dependency information
-  // cacheDirectory: "/private/var/folders/4v/42v631297zg98pqb2hqxfrlm0000gn/T/jest_dx",
-
   // Automatically clear mock calls, instances, contexts and results before every test
   clearMocks: true,
 
@@ -140,7 +131,7 @@ const customJestConfig = {
   // runner: "jest-runner",
 
   // The paths to modules that run some code to configure or set up the testing environment before each test
-  // setupFiles: [],
+  setupFiles: ["<rootDir>/jest.polyfills.js"],
 
   // A list of paths to modules that run some code to configure or set up the testing framework before each test
   setupFilesAfterEnv: ["<rootDir>/jest.setup.js"],
@@ -155,7 +146,10 @@ const customJestConfig = {
   testEnvironment: "jsdom",
 
   // Options that will be passed to the testEnvironment
-  // testEnvironmentOptions: {},
+  // Doing below to make MSW work - https://mswjs.io/docs/migrations/1.x-to-2.x/#cannot-find-module-mswnode-jsdom
+  testEnvironmentOptions: {
+    customExportConditions: [""],
+  },
 
   // Adds a location field to test results
   // testLocationInResults: false,
