@@ -12,13 +12,33 @@ describe("Forecast page", () => {
     render(<Forecast />);
 
     await waitFor(() => {
-      forecastResponse.items.forEach((item, idx) => {
-        const forecastCard = screen.getByTestId(`forecast-card-${idx}`);
-        expect(within(forecastCard).getByText(item.date)).toBeInTheDocument();
-        expect(
-          within(forecastCard).getByText(item.prediction),
-        ).toBeInTheDocument();
-      });
+      const forecastCard0 = screen.getByTestId(`forecast-card-0`);
+      expect(within(forecastCard0).getByText("Mon, Jul 8")).toBeInTheDocument();
+      expect(
+        within(forecastCard0).getByText(forecastResponse.items[0].prediction),
+      ).toBeInTheDocument();
+
+      const forecastCard1 = screen.getByTestId(`forecast-card-1`);
+      expect(within(forecastCard1).getByText("Tue, Jul 9")).toBeInTheDocument();
+      expect(
+        within(forecastCard1).getByText(forecastResponse.items[1].prediction),
+      ).toBeInTheDocument();
+
+      const forecastCard2 = screen.getByTestId(`forecast-card-2`);
+      expect(
+        within(forecastCard2).getByText("Wed, Jul 10"),
+      ).toBeInTheDocument();
+      expect(
+        within(forecastCard2).getByText(forecastResponse.items[2].prediction),
+      ).toBeInTheDocument();
+
+      const forecastCard3 = screen.getByTestId(`forecast-card-3`);
+      expect(
+        within(forecastCard3).getByText("Thu, Jul 11"),
+      ).toBeInTheDocument();
+      expect(
+        within(forecastCard3).getByText(forecastResponse.items[3].prediction),
+      ).toBeInTheDocument();
     });
   });
 
