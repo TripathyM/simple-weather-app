@@ -11,13 +11,23 @@ export interface WeatherData {
 export default function Now() {
   const router = useRouter();
   const [weatherData, setWeatherData] = useState<WeatherData[]>([]);
+  const [isError, setError] = useState<boolean>(false);
 
-  useEffect(() => {
-    const getWeatherData = async () => {
+  const getWeatherData = async () => {
+    try {
       const fetchResponse = await fetch("/api/now");
+      if (!fetchResponse.ok) {
+        throw new Error("Failed to fetch weather data");
+      }
       const responseJson = await fetchResponse.json();
       setWeatherData(responseJson.items);
-    };
+      setError(false);
+    } catch (error) {
+      setError(true);
+    }
+  };
+
+  useEffect(() => {
     getWeatherData();
   }, []);
 
@@ -32,6 +42,14 @@ export default function Now() {
             <h1 className="text-6xl text-center font-bold pb-24 text-gray-700">
               What&apos;s it like outside?
             </h1>
+            {isError && (
+              <div className="flex flex-row items-center gap-4">
+                <p className="text-center text-red-600 font-bold">
+                  Failed to fetch weather data
+                </p>
+                <Button title="Retry" onClick={getWeatherData} />
+              </div>
+            )}
             <div className="w-[60%] flex flex-row gap-4">
               {weatherData.map((data, i) => (
                 <Card
