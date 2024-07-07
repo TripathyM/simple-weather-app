@@ -15,7 +15,7 @@ export default function Home() {
             <h1 className="text-6xl text-center font-bold pb-24 text-gray-700">
               Simple Weather App
             </h1>
-            <div className="w-[50%] flex flex-row gap-24">
+            <div className="w-[60%] grid grid-cols-1 md:grid-cols-2 gap-24">
               <Button title="Now" onClick={() => router.push("/now")} />
               <Button
                 title="Forecast"
