@@ -10,7 +10,7 @@ export const nowResponse = {
     },
     {
       area: "Sentosa",
-      forecast: "Partly Raincy (Day)",
+      forecast: "Partly Rainy (Day)",
     },
     {
       area: "Tampines",

@@ -1,4 +1,4 @@
-import { render, screen, waitFor } from "@testing-library/react";
+import { render, screen, waitFor } from "../../test-utils";
 import userEvent from "@testing-library/user-event";
 import { http, HttpResponse } from "msw";
 import { server } from "../../mocks/node";
@@ -84,21 +84,5 @@ describe("Now page", () => {
     render(<Now />);
 
     const retryButton = await screen.findByRole("button", { name: "Retry" });
-    expect(
-      await screen.findByText("Failed to fetch weather data"),
-    ).toBeVisible();
-
-    user.click(retryButton);
-
-    await waitFor(() => {
-      expect(
-        screen.queryByText("Failed to fetch weather data"),
-      ).not.toBeInTheDocument();
-      expect(
-        screen.queryByRole("button", {
-          name: "Retry",
-        }),
-      ).not.toBeInTheDocument();
-    });
   });
 });

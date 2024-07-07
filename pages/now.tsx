@@ -1,7 +1,8 @@
 import Button from "@/components/button";
 import Card from "@/components/card";
+import { CardsSkeleton } from "@/components/skeletons";
+import { useWeatherData } from "@/src/hooks/useWeatherData";
 import { useRouter } from "next/router";
-import { useEffect, useState } from "react";
 
 export interface WeatherData {
   area: string;
@@ -10,27 +11,7 @@ export interface WeatherData {
 
 export default function Now() {
   const router = useRouter();
-  const [weatherData, setWeatherData] = useState<WeatherData[]>([]);
-  const [isError, setError] = useState<boolean>(false);
-
-  const getWeatherData = async () => {
-    try {
-      const fetchResponse = await fetch("/api/now");
-      if (!fetchResponse.ok) {
-        throw new Error("Failed to fetch weather data");
-      }
-      const responseJson = await fetchResponse.json();
-      setWeatherData(responseJson.items);
-      setError(false);
-    } catch (error) {
-      setError(true);
-    }
-  };
-
-  useEffect(() => {
-    getWeatherData();
-  }, []);
-
+  const { data: weatherData, isError, isLoading, refetch } = useWeatherData();
   return (
     <div>
       <main>
@@ -44,20 +25,22 @@ export default function Now() {
             </h1>
             {isError && (
               <div className="flex flex-row items-center gap-4">
-                <p className="text-center text-red-600 font-bold">
+                <p className="text-center text-red-600 text-3xl font-bold">
                   Failed to fetch weather data
                 </p>
-                <Button title="Retry" onClick={getWeatherData} />
+                <Button title="Retry" onClick={refetch} />
               </div>
             )}
+            {isLoading && <CardsSkeleton />}
             <div className="w-[60%] flex flex-row gap-4">
-              {weatherData.map((data, i) => (
-                <Card
-                  key={i}
-                  weatherData={data}
-                  additionalClassNames="flex-1"
-                />
-              ))}
+              {weatherData &&
+                weatherData.items.map((data, i) => (
+                  <Card
+                    key={i}
+                    weatherData={data}
+                    additionalClassNames="flex-1"
+                  />
+                ))}
             </div>
           </div>
         </div>
