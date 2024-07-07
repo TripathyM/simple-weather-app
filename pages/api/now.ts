@@ -1,24 +1,11 @@
+import { ErrorResponse, WeatherNowResponse } from "@/src/types/weatherTypes";
 import { NextApiRequest, NextApiResponse } from "next";
-
-type WeatherData = {
-  area: string;
-  forecast: string;
-};
-
-export type WeatherNowResponse = {
-  items: WeatherData[];
-};
-
-type ErrorResponse = {
-  error: string;
-};
 
 export default async function handler(
   req: NextApiRequest,
   res: NextApiResponse<WeatherNowResponse | ErrorResponse>,
 ) {
   if (req.method === "GET") {
-    // Reminder: you can fetch the forecast data at https://birdsofaweather.netlify.app/api/weather/forecast
     const fetchResponse = await fetch(
       "https://birdsofaweather.netlify.app/api/weather/now",
     );

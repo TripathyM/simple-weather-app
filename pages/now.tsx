@@ -1,17 +1,17 @@
 import Button from "@/components/button";
 import Card from "@/components/card";
 import { CardsSkeleton } from "@/components/skeletons";
-import { useWeatherData } from "@/src/hooks/useWeatherData";
+import { useWeatherNowData } from "@/src/hooks/useWeatherNowData";
 import { useRouter } from "next/router";
-
-export interface WeatherData {
-  area: string;
-  forecast: string;
-}
 
 export default function Now() {
   const router = useRouter();
-  const { data: weatherData, isError, isLoading, refetch } = useWeatherData();
+  const {
+    data: weatherData,
+    isError,
+    isLoading,
+    refetch,
+  } = useWeatherNowData();
   return (
     <div>
       <main>

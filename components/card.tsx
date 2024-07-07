@@ -1,4 +1,4 @@
-import { WeatherData } from "@/pages/now";
+import { WeatherData } from "@/src/types/weatherTypes";
 import React from "react";
 
 interface CardProps {
