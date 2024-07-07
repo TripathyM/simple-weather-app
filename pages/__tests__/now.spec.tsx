@@ -5,6 +5,8 @@ import { server } from "../../mocks/node";
 import Now from "../now";
 import { nowResponse } from "@/mocks/data";
 
+const NOW_API_PATH = "/api/now";
+
 describe("Now page", () => {
   it("should show the weather data for cities retrieved from api", async () => {
     render(<Now />);
@@ -22,7 +24,7 @@ describe("Now page", () => {
 
   it("should show error message and retry button on failure of weather data retrieval", async () => {
     server.use(
-      http.get("/api/now", () => {
+      http.get(NOW_API_PATH, () => {
         return HttpResponse.json({ items: [] }, { status: 500 });
       }),
     );
@@ -45,7 +47,7 @@ describe("Now page", () => {
 
     server.use(
       http.get(
-        "/api/now",
+        NOW_API_PATH,
         () => {
           return HttpResponse.json({ items: [] }, { status: 500 });
         },
@@ -77,7 +79,7 @@ describe("Now page", () => {
 
     server.use(
       http.get(
-        "/api/now",
+        NOW_API_PATH,
         () => {
           return HttpResponse.json({ items: [] }, { status: 500 });
         },
