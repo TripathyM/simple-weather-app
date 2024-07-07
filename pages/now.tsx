@@ -1,6 +1,7 @@
 import Button from "@/components/button";
-import Card from "@/components/card";
+import ErrorMessageWithRetry from "@/components/errorMessageWithRetry";
 import { CardsSkeleton } from "@/components/skeletons";
+import WeatherCards from "@/components/weather/weatherCards";
 import { useWeatherNowData } from "@/src/hooks/useWeatherNowData";
 import { useRouter } from "next/router";
 
@@ -12,6 +13,7 @@ export default function Now() {
     isLoading,
     refetch,
   } = useWeatherNowData();
+
   return (
     <div>
       <main>
@@ -24,24 +26,13 @@ export default function Now() {
               What&apos;s it like outside?
             </h1>
             {isError && (
-              <div className="flex flex-row items-center gap-4">
-                <p className="text-center text-red-600 text-3xl font-bold">
-                  Failed to fetch weather data
-                </p>
-                <Button title="Retry" onClick={refetch} />
-              </div>
+              <ErrorMessageWithRetry
+                message="Failed to fetch weather data"
+                onRetry={refetch}
+              />
             )}
             {isLoading && <CardsSkeleton />}
-            <div className="w-[60%] flex flex-row gap-4">
-              {weatherData &&
-                weatherData.items.map((data, i) => (
-                  <Card
-                    key={i}
-                    weatherData={data}
-                    additionalClassNames="flex-1"
-                  />
-                ))}
-            </div>
+            {weatherData && <WeatherCards dataItems={weatherData.items} />}
           </div>
         </div>
       </main>
