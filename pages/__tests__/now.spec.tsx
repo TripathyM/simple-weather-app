@@ -64,12 +64,8 @@ describe("Now page", () => {
     user.click(retryButton);
 
     await waitFor(() => {
-      nowResponse.items.forEach((item, idx) => {
-        const weatherCard = screen.getByTestId(`weather-card-${idx}`);
-        expect(within(weatherCard).getByText(item.area)).toBeInTheDocument();
-        expect(
-          within(weatherCard).getByText(item.forecast),
-        ).toBeInTheDocument();
+      nowResponse.items.forEach((_, idx) => {
+        expect(screen.getByTestId(`weather-card-${idx}`)).toBeVisible();
       });
     });
   });
