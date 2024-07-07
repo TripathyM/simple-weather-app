@@ -15,7 +15,7 @@ export const CardsSkeleton = ({ count = 4 }) => {
   const skeletonCards = Array(count).fill(null); // Create an array with the specified count
 
   return (
-    <div className="w-[60%] flex flex-row gap-4">
+    <div className="w-[60%] grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
       {skeletonCards.map((_, index) => (
         <CardSkeleton key={index} />
       ))}
