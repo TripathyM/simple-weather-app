@@ -11,10 +11,12 @@ const Card: React.FC<CardProps> = ({
   title,
   description,
   additionalClassNames,
+  ...props // to allow data-testid
 }) => {
   return (
     <div
       className={`opacity-80 bg-gray-300 max-w-sm rounded-lg shadow-md overflow-hidden ${additionalClassNames}`}
+      {...props}
     >
       <div className="p-4">
         <h2 className="text-gray-700 text-xl font-semibold mb-2">{title}</h2>
