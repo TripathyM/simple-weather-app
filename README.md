@@ -90,6 +90,14 @@ the response from the corresponding NextJS API route translates the error to a 2
    https://github.com/aws-actions/amazon-ecs-deploy-task-definition?tab=readme-ov-file and
    https://github.com/aws-actions/amazon-ecr-login?tab=readme-ov-file#aws-credentials
 
+### Other areas for improvements:
+
+1. Server Side Rendering could be considered for faster loading since the weather forecast data changes (infrequently?).
+2. UI can be enhanced using icons to show weather details, or a popup to show further details
+   on hover on cards.
+3. Tools like commitlint can be added to ensure conventional commits
+4. Tests for Home page can be added as well. Currently only Now and Forecast page has tests
+
 ## Setup
 
 1. Fork this repository to your own account, clone it, then run the following commands:
