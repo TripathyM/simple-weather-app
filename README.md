@@ -57,9 +57,10 @@ the response from the corresponding NextJS API route translates the error to a 2
 1. `components/weather folder` - Dedicated folder for weather specific components has been added. The general components are
    available in the `components` directory. `Card` component has been refactored to allow displaying of any data with title
    and description. The `components/weather/weatherCards` and `components/weather/forecastCards` are built on top of `Card` component.
-2. **Custom Hooks for Separation of Concerns:** Custom hooks have been introduced to handle data fetching,
+2. **Common Layout:** A common layout has been added in `_app.tsx` to avoid duplication of layout structure across all pages
+3. **Custom Hooks for Separation of Concerns:** Custom hooks have been introduced to handle data fetching,
    keeping React components free from data fetching logic. This promotes clean separation of concerns.
-3. **Responsive Design:** The application now adapts layouts for different screen sizes.
+4. **Responsive Design:** The application now adapts layouts for different screen sizes.
    Sample images for different devices are included for reference (not exhaustive):
 
 ##### Home Page
@@ -69,6 +70,7 @@ the response from the corresponding NextJS API route translates the error to a 2
 
 ##### Now Page
 
+![Desktop Screenshot of Now Error message and Retry](screenshots/now-error-retry.png)
 ![Desktop Screenshot of Now Skeleton page](screenshots/now-skeleton-desktop.png)
 ![Tab Screenshot of Now Skeleton page](screenshots/now-skeleton-tab.png)
 ![Tab Screenshot of Now page](screenshots/now-tab.png)
