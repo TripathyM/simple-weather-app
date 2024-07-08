@@ -73,14 +73,14 @@ the response from the corresponding NextJS API route translates the error to a 2
 ##### Now Page
 
 ![Desktop Screenshot of Now Error message and Retry](screenshots/now-error-retry.png)
-![Desktop Screenshot of Now Skeleton page](screenshots/now-skeleton-desktop.png)
+![Desktop Screenshot of Now Skeleton page](screenshots/now-skeleton-desktop-view.png)
 ![Tab Screenshot of Now Skeleton page](screenshots/now-skeleton-tab.png)
 ![Tab Screenshot of Now page](screenshots/now-tab.png)
 ![Mobile Screenshot of Now page](screenshots/now-mobile.png)
 
 ##### Forecast Page
 
-![Desktop Screenshot of Forecast page](screenshots/forecast-desktop.png)
+![Desktop Screenshot of Forecast page](screenshots/forecast-desktop-view.png)
 
 ### Task 4: Complete the jobs in .github/workflows
 
