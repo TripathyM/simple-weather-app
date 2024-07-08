@@ -51,6 +51,8 @@ the response from the corresponding NextJS API route translates the error to a 2
    giving us the confidence similar to E2E tests for the components.
 6. **Client side Data Management with React Query:** React Query simplifies data caching and retrying failed API
    requests within the client application.
+7. **Environment variables:** Backend API URL has been configured in `.env.local` file. NextJS comes with a built-in
+   support for environment variables using .env files.
 
 #### Component Structure and Design:
 

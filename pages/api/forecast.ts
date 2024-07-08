@@ -10,7 +10,7 @@ export default async function handler(
 ) {
   if (req.method === "GET") {
     const fetchResponse = await fetch(
-      "https://birdsofaweather.netlify.app/api/weather/forecast",
+      `${process.env.WEATHER_BACKEND_BASE_URL}/api/weather/forecast`,
     );
     if (fetchResponse.ok) {
       const responseJson = await fetchResponse.json();
