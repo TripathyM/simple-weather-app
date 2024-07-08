@@ -1,7 +1,11 @@
 # challenge : fix the script below if you think it is necessary to improve certain aspect of devops
 
 name: master
+
 # challenge : i want to make sure that only one job can run at one time
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
 
 # challenge : i want to make sure that only when master branch committed, then it runs
 on:
