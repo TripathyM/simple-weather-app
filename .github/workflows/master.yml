@@ -3,9 +3,11 @@
 name: master
 # challenge : i want to make sure that only one job can run at one time
 
+# challenge : i want to make sure that only when master branch committed, then it runs
 on:
   push:
-# challenge : i want to make sure that only when master branch committed, then it runs
+    branches:
+      - master
 
 jobs:
   test:
@@ -15,8 +17,9 @@ jobs:
       - uses: actions/checkout@v4
       - uses: actions/setup-node@v4
         with:
-          node-version: 14.x
-    # - challenge: do things that you think is necessary
+          node-version: 20.x
+      - run: npm ci
+      - run: npm test
 
   deploy:
     name: deploy
